@@ -3,11 +3,11 @@ import sgMail from '@sendgrid/mail'
 export async function POST(req: Request) {
     const { subscriberEmail } = await req.json()
 
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY || '')
 
     const msg = {
-      to: process.env.ADMIN_EMAIL_1,
-      from: process.env.SENDGRID_VERIFIED_SENDER_EMAIL_ADDRESS,
+      to: process.env.ADMIN_EMAIL_1 || '',
+      from: process.env.SENDGRID_VERIFIED_SENDER_EMAIL_ADDRESS || '',
       subject: 'New Contact From Seek Medical Affairs',
       text: `${subscriberEmail} has signed up for updates`,
       html: `<strong>${subscriberEmail} has signed up for updates</strong>`,
