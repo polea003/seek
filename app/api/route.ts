@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     const msg2 = { ...msg, to: process.env.ADMIN_EMAIL_2}
 
     console.log('foo3')
-    sgMail.send([msg, msg2])
+    await sgMail.send([msg, msg2])
     console.log('foo4')
     console.log('Email sent')
     return Response.json({ message: 'successfully subscribed' , ok: true })
