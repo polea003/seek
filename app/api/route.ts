@@ -24,12 +24,10 @@ export async function POST(req: Request) {
       .then(() => {
         console.log('foo4')
         console.log('Email sent')
+        return Response.json({ message: 'successfully subscribed' , ok: true })
       })
       .catch((error) => {
         console.error(error)
         return Response.json({ message: 'error occurred' , ok: false })
       })
-
-    console.log('foo5')
-    return Response.json({ message: 'successfully subscribed' , ok: true })
   }
