@@ -1,8 +1,10 @@
 import sgMail from '@sendgrid/mail'
 
 export async function POST(req: Request) {
-    console.log('foo')
+    console.log('foo1')
     const { subscriberEmail } = await req.json()
+
+    console.log(`foo2: ${subscriberEmail}`)
 
     sgMail.setApiKey(process.env.SENDGRID_API_KEY || '')
 
@@ -14,9 +16,13 @@ export async function POST(req: Request) {
       html: `<strong>${subscriberEmail} has signed up for updates</strong>`,
     }
     const msg2 = { ...msg, to: process.env.ADMIN_EMAIL_2}
+    
+    console.log('foo3')
+
     sgMail
       .send([msg, msg2])
       .then(() => {
+        console.log('foo4')
         console.log('Email sent')
       })
       .catch((error) => {
@@ -24,5 +30,6 @@ export async function POST(req: Request) {
         return Response.json({ message: 'error occurred' , ok: false })
       })
 
+    console.log('foo5')
     return Response.json({ message: 'successfully subscribed' , ok: true })
   }
