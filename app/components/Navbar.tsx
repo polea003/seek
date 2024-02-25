@@ -12,7 +12,7 @@ const pages = ['solutions', 'about', 'contact']
 
 export function Navbar() {
     return (
-        <div className="w-full flex items-center justify-between bg-white px-5">
+        <div className="w-full flex items-center justify-between bg-white px-5 shadow-lg">
             <Link href="/">
                 <div className="h-14 w-24 relative">
                     <Image
