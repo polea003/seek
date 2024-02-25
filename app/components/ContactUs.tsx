@@ -4,7 +4,7 @@ import {Button} from '@nextui-org/button';
 import {Input} from "@nextui-org/react";
 import Link from 'next/link';
 
-const ComingSoonPage: React.FC = () => {
+export const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: ''
@@ -91,13 +91,7 @@ const ComingSoonPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen p-4 bg-zinc-100 justify-center pb-20 text-zinc-600">
-      <h1 className="text-xl uppercase tracking-wider mb-20">
-        SEEK Medical Affairs
-      </h1>
-      <h1 className="text-center text-3xl sm:text-5xl uppercase tracking-wider mb-20">
-        launching soon
-      </h1>
+    <div className="flex flex-col items-center pt-20 justify-center pb-20 text-zinc-600">
       <h2 className="text-xl uppercase tracking-wider pb-2">
         get notified
       </h2>
@@ -144,5 +138,3 @@ const ComingSoonPage: React.FC = () => {
     </div>
   );
 };
-
-export default ComingSoonPage;

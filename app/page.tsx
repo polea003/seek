@@ -3,7 +3,18 @@ import ComingSoonPage from './components/ComingSoonPage'
 
 export default function Home() {
   return (
-      <ComingSoonPage />
-    // <main className="flex min-h-screen flex-col items-center justify-between p-24"><ComingSoonPage /></main>
+    <div className='flex flex-col items-center'>
+      <div className='flex flex-col items-end pt-40'>
+        <div className='w-[700px] h-64 relative'>
+          <Image
+            className='object-contain'
+            src="/Logo.png"
+            fill
+            alt="Seek Logo"
+          />
+        </div>
+        <h1 className='pt-2 text-4xl font-medium tracking-wide'>Medical Affairs</h1>
+      </div>
+    </div>
   )
 }
