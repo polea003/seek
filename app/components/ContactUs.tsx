@@ -1,12 +1,16 @@
 "use client"
 import { useState } from 'react';
 import {Button} from '@nextui-org/button'; 
-import {Input, Textarea, Select, SelectItem} from "@nextui-org/react";
+import {Input, Textarea, Select, SelectItem, Chip} from "@nextui-org/react";
 import Image from 'next/image';
 
 // TODO: hook up the form
 
-const solutions = ['Talent Acquisition', 'Consulting & Advisory', 'Training & Development']
+const solutions = [
+  { key: 'Talent Acquisition', value: 'Talent Acquisition' },
+  { key: 'Consulting & Advisory', value: 'Consulting & Advisory' }, 
+  { key: 'Training & Development', value: 'Training & Development' }
+]
 
 export const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -51,8 +55,11 @@ export const ContactUs: React.FC = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        subscriberEmail: formData.email,
-        subscriberName: formData.name
+        email: formData.email,
+        name: formData.name,
+        company: formData.company,
+        solutions: formData.solutions,
+        note: formData.note,
       })
     })
 
@@ -89,14 +96,13 @@ export const ContactUs: React.FC = () => {
     if (errorsFound) {
       return
     }
-    console.log({ formData })
-    // setIsSendingEmail(true)
-    // setTimeout(async () => {
-    //   await sendEmail()
-    //   setIsSendingEmail(false)
-    //   console.log('email sent');
-    //   setIsSuccess(true);
-    // }, 80)
+    setIsSendingEmail(true)
+    setTimeout(async () => {
+      await sendEmail()
+      setIsSendingEmail(false)
+      console.log('email sent');
+      setIsSuccess(true);
+    }, 80)
   };
 
   return (
@@ -122,7 +128,7 @@ export const ContactUs: React.FC = () => {
             autoComplete='off'
             label='Name'
             name='name'
-            color="primary"
+            // color="primary"
             description='Please provide your full name'
             isReadOnly={isSuccess || isSendingEmail}
             value={formData.name}
@@ -135,7 +141,7 @@ export const ContactUs: React.FC = () => {
             label='Company'
             description='Who do you work with?'
             name='company'
-            color="primary"
+            // color="primary"
             isReadOnly={isSuccess || isSendingEmail}
             value={formData.company}
           />
@@ -144,16 +150,17 @@ export const ContactUs: React.FC = () => {
             label='Email'
             name='email'
             description='How should we reach you?'
-            color="primary"
+            // color="primary"
             variant='bordered'
             isReadOnly={isSuccess || isSendingEmail}
             value={formData.email}
             isInvalid={isFormError.email}
             errorMessage={isFormError.email ? 'Please enter a valid email' : ''}
           />
-          <Select
+          {/* <Select
             name='solutions'
             label="Solutions"
+            // isMultiline={true}
             description='What services are you interested in?'
             color="primary"
             variant='bordered'
@@ -166,12 +173,41 @@ export const ContactUs: React.FC = () => {
                 {solution}
               </SelectItem>
             ))}
+          </Select> */}
+          <Select
+            items={solutions}
+            name='solutions'
+            onChange={handleFormChange}
+            variant="bordered"
+            isMultiline={true}
+            selectionMode="multiple"
+            description='What services are you interested in?'
+            placeholder="Solutions"
+            labelPlacement="outside"
+            aria-label="Solutions"
+            // color='primary'
+            classNames={{
+              trigger: "min-h-unit-12 py-2 placeholder:text-red-500",
+            }}
+            renderValue={(items) => {
+              return (
+                <div className="flex flex-wrap gap-2">
+                  {items.map((item) => (
+                    <Chip key={item.key}>{item.data.value}</Chip>
+                  ))}
+                </div>
+              );
+            }}
+          >
+            {(item) => (
+              <SelectItem key={item.key} textValue={item.value}>{item.value}</SelectItem>
+            )}
           </Select>
           <Textarea
             name='note'
             label="Note"
             variant='bordered'
-            color="primary"
+            // color="primary"
             value={formData.note}
           />
           <div className='sm:pt-4'>
