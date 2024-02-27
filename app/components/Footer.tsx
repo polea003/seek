@@ -13,9 +13,9 @@ export function Footer() {
             </div>
             <div className="flex flex-col space-y-6">
                 <div className="font-semibold pb-3 text-gray-200">Solutions</div>
-                <Link style={{ color: 'inherit', textDecoration: 'inherit' }} href="/">Talent Acquisition</Link>
-                <Link style={{ color: 'inherit', textDecoration: 'inherit' }} href="/solutions">Consulting & Advisory</Link>
-                <Link style={{ color: 'inherit', textDecoration: 'inherit' }} href="/about">Training & Development</Link>
+                <Link style={{ color: 'inherit', textDecoration: 'inherit' }} href="/solutions#talent">Talent Acquisition</Link>
+                <Link style={{ color: 'inherit', textDecoration: 'inherit' }} href="/solutions#consulting">Consulting & Advisory</Link>
+                <Link style={{ color: 'inherit', textDecoration: 'inherit' }} href="/solutions#training">Training & Development</Link>
             </div>
             <div className="flex flex-col space-y-6">
                 <div className="font-semibold pb-3 text-gray-200">Find Us</div>
@@ -23,7 +23,9 @@ export function Footer() {
             </div>
             <div className="flex flex-col space-y-6">
                 <div className="font-semibold pb-3 text-gray-200">Follow Us</div>
-                <LinkedInIcon fontSize="large" />
+                <Link style={{ color: 'inherit', textDecoration: 'inherit' }} target="_blank" href="https://www.linkedin.com/company/seek-medical-affairs">
+                    <LinkedInIcon fontSize="large" />
+                </Link>
             </div>
         </div>
     )

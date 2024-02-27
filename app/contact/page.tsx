@@ -1,9 +1,7 @@
 import { ContactUs } from "../components/ContactUs"
 
-export default function Home() {
+export default function Contact() {
   return (
-    <div>
-      <ContactUs />
-    </div>
+    <ContactUs />
   )
 }

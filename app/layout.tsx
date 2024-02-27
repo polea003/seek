@@ -24,15 +24,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="flex flex-col min-h-screen bg-zinc-100 text-zinc-600">
-          <Navbar />
-          <div className='flex-1'>
-            <Providers>
-              {children}
-            </Providers>
+          <div className="flex flex-col items-center min-h-screen bg-slate-100 text-zinc-600">
+            <Navbar />
+            <div className='w-[1100px] flex-1 my-20'>
+              <Providers>
+                {children}
+              </Providers>
+            </div>
           </div>
-        </div>
-        <Footer />
+          <Footer />
       </body>
     </html>
   )

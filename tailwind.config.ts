@@ -11,6 +11,15 @@ const config: Config = {
   theme: {
     extend: {},
   },
-  plugins: [nextui()]
+  plugins: [nextui({
+    themes: {
+      light: {
+        layout: {},
+        colors: {
+          'primary': '#61234A'
+        },
+      },
+    }
+  })]
 }
 export default config

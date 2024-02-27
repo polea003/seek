@@ -1,13 +1,20 @@
 "use client"
 import { useState } from 'react';
 import {Button} from '@nextui-org/button'; 
-import {Input} from "@nextui-org/react";
-import Link from 'next/link';
+import {Input, Textarea, Select, SelectItem} from "@nextui-org/react";
+import Image from 'next/image';
+
+// TODO: hook up the form
+
+const solutions = ['Talent Acquisition', 'Consulting & Advisory', 'Training & Development']
 
 export const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
-    email: ''
+    company: '',
+    email: '',
+    solutions: '',
+    note: ''
   });
   const [isFormError, setIsFormError] = useState({
     name: false,
@@ -30,6 +37,7 @@ export const ContactUs: React.FC = () => {
 
   const handleFormChange = (event: React.FormEvent<HTMLFormElement>) => {
     const { name, value } = event.target as HTMLInputElement
+    console.log({ name, value })
     setFormData(prevFormData => ({
       ...prevFormData,
       [name]: value
@@ -81,60 +89,104 @@ export const ContactUs: React.FC = () => {
     if (errorsFound) {
       return
     }
-    setIsSendingEmail(true)
-    setTimeout(async () => {
-      await sendEmail()
-      setIsSendingEmail(false)
-      console.log('email sent');
-      setIsSuccess(true);
-    }, 80)
+    console.log({ formData })
+    // setIsSendingEmail(true)
+    // setTimeout(async () => {
+    //   await sendEmail()
+    //   setIsSendingEmail(false)
+    //   console.log('email sent');
+    //   setIsSuccess(true);
+    // }, 80)
   };
 
   return (
-    <div className="flex flex-col items-center pt-20 justify-center pb-20 text-zinc-600">
-      <h2 className="text-xl uppercase tracking-wider pb-2">
-        get notified
-      </h2>
-      <p className='text-center mb-10'>Enter your email below to stay in touch</p>
-      <form onChange={handleFormChange} onSubmit={handleSubmit} className="flex flex-col space-y-6 items-center w-full pt-4">
-        <Input 
-          autoComplete='off'
-          label='Name'
-          name='name'
-          color="primary"
-          variant='underlined'
-          description='Please provide your full name'
-          isReadOnly={isSuccess || isSendingEmail}
-          value={formData.name}
-          isInvalid={isFormError.name}
-          errorMessage={isFormError.name ? 'Please provide your full name' : ''}
-          className='max-w-xs'
-        />
-        <Input 
-          autoComplete='off'
-          label='Email'
-          name='email'
-          color="primary"
-          variant='underlined'
-          description='Enter email to subscribe'
-          isReadOnly={isSuccess || isSendingEmail}
-          value={formData.email}
-          isInvalid={isFormError.email}
-          errorMessage={isFormError.email ? 'Please enter a valid email' : ''}
-          className='max-w-xs'
-        />
-        <div className='sm:pt-4'>
-          <Button 
-            isLoading={isSendingEmail}
-            type='submit'
-            color={isSuccess ? 'primary' : 'primary'}
-            disabled={isSuccess}
-            className='uppercase tracking-wider font-medium rounded-sm w-32'
-            variant="bordered"
-          >{isSuccess ? 'done' : 'subscribe'}</Button>
+    <div className='flex gap-12'>
+      <div className='flex flex-col'>
+        <div className="w-[500px] flex-1 relative rounded-xl overflow-hidden">
+          <Image
+            className='object-cover'
+            src="/seek_example.webp"
+            fill
+            alt="Seek Logo"
+          />
         </div>
-      </form>
-      <p className='text-medium tracking-wide h-10 text-align-center text-primary flex items-end'>{isSuccess && 'Successfully Subscribed!'}</p>
-    </div>
+      </div>
+      <div className="flex flex-col items-stretch justify-center text-zinc-600">
+        <h2 className="text-xl uppercase tracking-wider pb-2">
+          Contact Us
+        </h2>
+        <p className='mb-8 text-lg'>Ready to take the next step? We're here to support your journey to success. Drop us a message with your details, and let's discuss how we can help you reach your goals. </p>
+        <form onChange={handleFormChange} onSubmit={handleSubmit} className="flex flex-col space-y-4 items-stretch w-full">
+          <Input 
+            variant='bordered'
+            autoComplete='off'
+            label='Name'
+            name='name'
+            color="primary"
+            description='Please provide your full name'
+            isReadOnly={isSuccess || isSendingEmail}
+            value={formData.name}
+            isInvalid={isFormError.name}
+            errorMessage={isFormError.name ? 'Please provide your full name' : ''}
+          />
+          <Input 
+            variant='bordered'
+            autoComplete='off'
+            label='Company'
+            description='Who do you work with?'
+            name='company'
+            color="primary"
+            isReadOnly={isSuccess || isSendingEmail}
+            value={formData.company}
+          />
+          <Input 
+            autoComplete='off'
+            label='Email'
+            name='email'
+            description='How should we reach you?'
+            color="primary"
+            variant='bordered'
+            isReadOnly={isSuccess || isSendingEmail}
+            value={formData.email}
+            isInvalid={isFormError.email}
+            errorMessage={isFormError.email ? 'Please enter a valid email' : ''}
+          />
+          <Select
+            name='solutions'
+            label="Solutions"
+            description='What services are you interested in?'
+            color="primary"
+            variant='bordered'
+            selectionMode="multiple"
+            value={formData.solutions}
+            onChange={handleFormChange}
+          >
+            {solutions.map((solution) => (
+              <SelectItem key={solution} value={solution}>
+                {solution}
+              </SelectItem>
+            ))}
+          </Select>
+          <Textarea
+            name='note'
+            label="Note"
+            variant='bordered'
+            color="primary"
+            value={formData.note}
+          />
+          <div className='sm:pt-4'>
+            <Button 
+              isLoading={isSendingEmail}
+              type='submit'
+              color={isSuccess ? 'primary' : 'primary'}
+              disabled={isSuccess}
+              className='uppercase tracking-wider font-medium rounded-sm w-32'
+              variant="bordered"
+            >{isSuccess ? 'done' : 'send'}</Button>
+          </div>
+        </form>
+        <p className='text-medium tracking-wide h-10 text-align-center text-primary flex items-end'>{isSuccess && 'Successfully Sent!'}</p>
+      </div>
+  </div>
   );
 };
