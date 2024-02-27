@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
-import Solutions from './solutions/page'
-import About from './about/page'
+import Solutions from './components/Solutions'
+import About from './components/About'
 import { ContactUs } from './components/ContactUs'
 // TODO: optimize for mobile
 

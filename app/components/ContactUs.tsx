@@ -35,7 +35,7 @@ export const ContactUs: React.FC = () => {
     return emailRegex.test(email)
   }
 
-  const handleFormChange = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleFormChange = (event: React.FormEvent<HTMLFormElement> | React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = event.target as HTMLInputElement
     console.log({ name, value })
     setFormData(prevFormData => ({
@@ -115,7 +115,7 @@ export const ContactUs: React.FC = () => {
         <h2 className="text-xl uppercase tracking-wider pb-2">
           Contact Us
         </h2>
-        <p className='mb-8 text-lg'>Ready to take the next step? We're here to support your journey to success. Drop us a message with your details, and let's discuss how we can help you reach your goals. </p>
+        <p className='mb-8 text-lg'>{'Ready to take the next step? We\'re here to support your journey to success. Drop us a message with your details, and let\'s discuss how we can help you reach your goals.'}</p>
         <form onChange={handleFormChange} onSubmit={handleSubmit} className="flex flex-col space-y-4 items-stretch w-full">
           <Input 
             variant='bordered'

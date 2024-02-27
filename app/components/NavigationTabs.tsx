@@ -24,7 +24,7 @@ export function NavigationTabs({ pages }) {
     const activePage = pages.indexOf(path?.substring(1))
     if (activePage >= 0) setValue(activePage)
     else setValue(false)
-  }, [path]);
+  }, [path, pages]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
