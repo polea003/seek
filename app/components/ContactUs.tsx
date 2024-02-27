@@ -4,8 +4,6 @@ import {Button} from '@nextui-org/button';
 import {Input, Textarea, Select, SelectItem, Chip} from "@nextui-org/react";
 import Image from 'next/image';
 
-// TODO: hook up the form
-
 const solutions = [
   { key: 'Talent Acquisition', value: 'Talent Acquisition' },
   { key: 'Consulting & Advisory', value: 'Consulting & Advisory' }, 

@@ -75,7 +75,7 @@ export default function Solutions({ isHomepage }) {
           </div>
         </div>
         <div className="w-full mx-auto h-96 md:w-[500px] md:h-[500px] relative rounded-xl overflow-hidden">
-          {/* TODO: new pictures code */}
+          {/* TODO: new pictures */}
           <Image
             className='object-cover'
             src="/seek_example.webp"

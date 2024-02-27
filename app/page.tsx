@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Solutions from './components/Solutions'
 import About from './components/About'
 import { ContactUs } from './components/ContactUs'
-// TODO: optimize for mobile
 
 export default function Home() {
   return (
