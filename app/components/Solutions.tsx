@@ -3,7 +3,7 @@ import Image from "next/image"
 import { useEffect, useState } from "react";
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 // import AccordionMenu from "../components/Accordion";
-import AccordionNextUI from "./AccordionNextUI";
+// import AccordionNextUI from "./AccordionNextUI";
 import { ContactUs } from "./ContactUs";
 import { Button } from "@mui/material";
 
@@ -75,6 +75,7 @@ export default function Solutions({ isHomepage }) {
           </div>
         </div>
         <div className="w-[500px] h-[500px] relative rounded-xl overflow-hidden">
+          {/* TODO: new pictures code */}
           <Image
             className='object-cover'
             src="/seek_example.webp"
