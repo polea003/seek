@@ -101,8 +101,8 @@ export const ContactUs: React.FC = () => {
 
   return (
     <div className='flex gap-12'>
-      <div className='flex flex-col'>
-        <div className="w-[500px] flex-1 relative rounded-xl overflow-hidden">
+      <div className='hidden md:flex md:flex-col'>
+        <div className="w-72 xl:w-[500px] flex-1 relative rounded-xl overflow-hidden">
           <Image
             className='object-cover'
             src="/seek_example.webp"
@@ -115,7 +115,7 @@ export const ContactUs: React.FC = () => {
         <h2 className="text-xl uppercase tracking-wider pb-2">
           Contact Us
         </h2>
-        <p className='mb-8 text-lg'>{'Ready to take the next step? We\'re here to support your journey to success. Drop us a message with your details, and let\'s discuss how we can help you reach your goals.'}</p>
+        <p className='mb-8 text-base sm:text-lg'>{'Ready to take the next step? We\'re here to support your journey to success. Drop us a message with your details, and let\'s discuss how we can help you reach your goals.'}</p>
         <form onChange={handleFormChange} onSubmit={handleSubmit} className="flex flex-col space-y-4 items-stretch w-full">
           <Input 
             variant='bordered'

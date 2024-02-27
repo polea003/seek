@@ -27,7 +27,7 @@ export default function RootLayout({
       <body>
           <div className="flex flex-col items-center min-h-screen bg-slate-100 text-zinc-600">
             <Navbar />
-            <div className='w-[1100px] flex-1 my-20'>
+            <div className='px-3 md:px-6 w-full xl:w-[1100px] flex-1 my-12 md:my-20'>
               <Providers>
                 {children}
                 <Analytics />

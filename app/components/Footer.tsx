@@ -3,7 +3,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 export function Footer() {
     return (
-        <div className="w-full flex bg-gray-700 px-12 gap-48 text-white py-16">
+        <div className="w-full flex flex-col md:flex-row bg-[#61234A] px-12 gap-20 md:gap-24 lg:gap-40 text-white py-16">
             <div className="flex flex-col space-y-6">
                 <div className="font-semibold pb-3 text-gray-200">Company</div>
                 <Link style={{ color: 'inherit', textDecoration: 'inherit' }} href="/">Home</Link>

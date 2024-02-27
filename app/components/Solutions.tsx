@@ -52,7 +52,7 @@ export default function Solutions({ isHomepage }) {
 
   return (
     <div className="flex flex-col">
-      <div className="w-full flex gap-12">
+      <div className="w-full flex flex-col lg:flex-row gap-12">
         <div className="flex flex-col flex-1">
           <h2 className="text-xl uppercase tracking-wider pb-6">Solutions</h2>
           {/* <AccordionNextUI /> */}
@@ -61,20 +61,20 @@ export default function Solutions({ isHomepage }) {
           <Button variant="text" size="large">Training & Development</Button> */}
           <div className="flex flex-col divide-y-2">
             <button className="w-full flex items-center text-left" onClick={() => setSelectedView('talent')}>
-              <div className="font-thin flex-1 py-10 text-3xl">Talent Acquisition</div>
+              <div className="font-thin flex-1 py-10 text-2xl md:text-3xl">Talent Acquisition</div>
               <ArrowCircleRightIcon fontSize="large" />
             </button>
             <button className="w-full flex items-center text-left" onClick={() => setSelectedView('consulting')}>
-              <div className="font-thin flex-1 py-10 text-3xl">Consulting & Advisory</div>
+              <div className="font-thin flex-1 py-10 text-2xl md:text-3xl">Consulting & Advisory</div>
               <ArrowCircleRightIcon fontSize="large" />
             </button>
             <button className="w-full flex items-center text-left" onClick={() => setSelectedView('training')}>
-              <div className="font-thin flex-1 py-10 text-3xl">Training & Development</div>
+              <div className="font-thin flex-1 py-10 text-2xl md:text-3xl">Training & Development</div>
               <ArrowCircleRightIcon fontSize="large" />
             </button>
           </div>
         </div>
-        <div className="w-[500px] h-[500px] relative rounded-xl overflow-hidden">
+        <div className="w-full mx-auto h-96 md:w-[500px] md:h-[500px] relative rounded-xl overflow-hidden">
           {/* TODO: new pictures code */}
           <Image
             className='object-cover'
@@ -87,7 +87,7 @@ export default function Solutions({ isHomepage }) {
       <div id="talent" className="pt-20">
         <h2 className="text-xl uppercase tracking-wider">Talent Acquisition</h2>
         <p className="text-lg tracking wide py-8">At Seek, we are dedicated to shaping the future of Medical Affairs by providing specialized recruitment services. Our deep understanding of the intricacies and evolving demands of this sector enables us to offer targeted recruitment solutions, perfectly aligned with the unique needs of our clients in the pharmaceutical and healthcare industries.</p>
-        <div className="grid grid-cols-4 gap-12 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 pt-12">
         {talentServices.map(service => {
           return (
             <div key={service.name} className="flex flex-col">
@@ -101,7 +101,7 @@ export default function Solutions({ isHomepage }) {
       <div id="consulting" className="pt-20">
         <h2 className="text-xl uppercase tracking-wider">Consulting & Advisory</h2>
         <p className="text-lg tracking wide py-8">We are thrilled to collaborate as thought partners with our clients through our Consulting & Advisory services. We leverage our real-world industry experience to help them overcome challenges and seize opportunities. Our innate curiosity and creative thinking enable us to create innovative and effective solutions tailored to specific business needs. We are committed to transforming Medical Affairs into a strategic pillar that drives positive outcomes for patients and society.</p>
-        <div className="grid grid-cols-4 gap-12 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 pt-12">
         {consultingServices.map(service => {
           return (
             <div key={service} className="flex flex-col">
@@ -114,7 +114,7 @@ export default function Solutions({ isHomepage }) {
       <div id="training" className="pt-20">
         <h2 className="text-xl uppercase tracking-wider">Training & Development</h2>
         <p className="text-lg tracking wide py-8">{'Our Training & Development services help clients retain and develop talent by offering opportunities to learn new skills and competencies essential for Medical Affairs\' evolving roles and activities.'}</p>
-        <div className="grid grid-cols-4 gap-12 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 pt-12">
         {trainingServices.map(service => {
           return (
             <div key={service} className="flex flex-col">

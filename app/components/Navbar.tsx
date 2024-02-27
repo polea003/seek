@@ -1,6 +1,7 @@
 'use client'
 import { NavigationTabs } from "./NavigationTabs"
 import { Link } from "@nextui-org/react"
+import { useRouter } from 'next/navigation';
 import Image from "next/image"
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
@@ -34,6 +35,7 @@ export function Navbar() {
 }
 
 function MobileMenu() {
+    const router = useRouter()
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -44,7 +46,7 @@ function MobileMenu() {
     };
     const onItemClick = (item) => {
         setAnchorEl(null);
-        console.log(item)
+        router.push(`/${item}`)
     };
 
 
@@ -68,7 +70,7 @@ function MobileMenu() {
                     'aria-labelledby': 'mobile-menu-button',
                 }}
             >
-                {pages.map(page => <MenuItem key={page} onClick={() => onItemClick(page)}>{page}</MenuItem>)}
+                {pages.map(page => <MenuItem key={page} className="capitalize" onClick={() => onItemClick(page)}>{page}</MenuItem>)}
             </Menu>
         </div>
     );
